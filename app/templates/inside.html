@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elevator</title>
+</head>
+
+<body>
+    <h2>User {{userId}}</h2>
+    <div>Currently at floor {{elevator.currentfloor}}</div>
+    <form  action="{{ url_for('movetheelevator') }}" method="get">
+        {% for floor in elevator.floors %}
+            {% if floor == elevator.currentfloor %}
+                <button disabled>{{floor}}</button>
+            {% else %}
+                <button type="submit" name="target_floor" value="{{floor}}">{{floor}}</button>
+            {% endif %}
+        {% endfor %}
+    </form>
+</body>
+
+</html>
